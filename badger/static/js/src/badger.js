@@ -13,39 +13,46 @@ function BadgerXBlock(runtime, element, data) {
     function getGrades(data) {
         var section_scores = data['section_scores'];
         console.log(section_title)
-        var this_section = section_scores[String(section_title)];
-        var section_title_id = '#' + section_title
-        console.log(this_section, section_scores)
-        console.log("HI", this_section)
-        if ( parseFloat(this_section) >= pass_mark) {
-            $.ajax({
+        if (section_scores.hasOwnProperty(section_title)) {
+            var this_section = section_scores[String(section_title)];
+
+            var section_title_id = '#' + section_title
+            console.log(this_section, section_scores)
+            console.log("HI", this_section)
+            if ( parseFloat(this_section) >= pass_mark) {
+                $.ajax({
+                    type: "POST",
+                    url: handlerUrl,
+                    data:JSON.stringify({"name": "badger"}),
+                    success: function(json) {
+                            location.reload();
+                    },
+                    error : function(xhr,errmsg,err) {
+                        $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                        " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+                    }
+                });
+            }
+            else {
+                $.ajax({
                 type: "POST",
-                url: handlerUrl,
+                url: noAwardUrl,
                 data:JSON.stringify({"name": "badger"}),
                 success: function(json) {
-                        location.reload();
-                },
-                error : function(xhr,errmsg,err) {
-                    $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-                    console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-                }
-            });
-        }
-        else {
-            $.ajax({
-            type: "POST",
-            url: noAwardUrl,
-            data:JSON.stringify({"name": "badger"}),
-            success: function(json) {
-                $('.badge-loader').hide();
-                $('#lean_overlay').hide();
-                var $motivation = $('<p class="badger-motivation">' 
-                + motivation_message + '</p>' );
-                $('.badger_block').append($motivation);
-                $('#check-for-badge').remove();
-                }
-            });
+                    $('.badge-loader').hide();
+                    $('#lean_overlay').hide();
+                    var $motivation = $('<p class="badger-motivation">' 
+                    + motivation_message + '</p>' );
+                    $('.badger_block').append($motivation);
+                    $('#check-for-badge').remove();
+                    }
+                });
+            }
+        } else {
+            $('.badge-loader').hide();
+            $('#lean_overlay').hide();
+            alert('The modlue named ' + '"'+ section_title + '"' + ' does not exist in the Grades Report! Please check you have specified the correct module name for this badge.')
         }
     }
 
