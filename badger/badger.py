@@ -210,9 +210,6 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         else:
             user = User.objects.get(username=self.current_user_key)
 
-        print "*^*^*", self.get_list_of_issuers()
-
-
         context = {
             'received_award': self.received_award,
             'check_earned': self.check_earned,
@@ -248,7 +245,6 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         frag = Fragment()
         context = {'fields': []}
         issuer_list = self.get_list_of_issuers()
-        print "LENGTH", len(issuer_list)
         
         # Build a list of all the fields that can be edited:
         for field_name in self.editable_fields:
