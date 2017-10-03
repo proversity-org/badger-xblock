@@ -12,13 +12,9 @@ function BadgerXBlock(runtime, element, data) {
 
     function getGrades(data) {
         var section_scores = data['section_scores'];
-        console.log(section_title)
         if (section_scores.hasOwnProperty(section_title)) {
             var this_section = section_scores[String(section_title)];
-
             var section_title_id = '#' + section_title
-            console.log(this_section, section_scores)
-            console.log("HI", this_section)
             if ( parseFloat(this_section) >= pass_mark) {
                 $.ajax({
                     type: "POST",
