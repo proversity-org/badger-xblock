@@ -233,7 +233,8 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
             'award_message': self.award_message,
             'motivation_message': self.motivation_message,
             'course_id':  str(self.runtime.course_id),
-            'badgrApiToken': self.api_token
+            'badgrApiToken': self.api_token,
+            'badge_slug': self.badge_slug
         })
 
         return frag
@@ -245,7 +246,6 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         """
         frag = Fragment()
         context = {'fields': []}
-        issuer_list = self.get_list_of_issuers()
         
         # Build a list of all the fields that can be edited:
         for field_name in self.editable_fields:

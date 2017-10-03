@@ -6,6 +6,7 @@ function BadgerXBlock(runtime, element, data) {
     var section_title = data.section_title;
     var pass_mark = data.pass_mark;
     var award_message = data.award_message;
+    var badge_slug = data.badge_slug;
     var motivation_message = data.motivation_message;
     var handlerUrl = runtime.handlerUrl(element, 'new_award_badge');
     var noAwardUrl = runtime.handlerUrl(element, 'no_award_received');
@@ -29,7 +30,8 @@ function BadgerXBlock(runtime, element, data) {
                         $('.badge-loader').hide();
                         $('#lean_overlay').hide();
                         $('#check-for-badge').remove();
-                        $('#results').html("<div>Oops! We have encountered an error, the badge does not exist. Please contact your support administrator."+
+                        $('#results').html("<div>Oops! We have encountered an error, the badge " + 
+                        '"' +  badge_slug + '"' +  " does not exist. Please contact your support administrator."+
                         "</div>"); // add the error to the dom
                         console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
                     }
@@ -53,7 +55,11 @@ function BadgerXBlock(runtime, element, data) {
         } else {
             $('.badge-loader').hide();
             $('#lean_overlay').hide();
-            alert('The modlue named ' + '"'+ section_title + '"' + ' does not exist in the Grades Report! Please check you have specified the correct module name for this badge.')
+            alert(
+                'The modlue named ' + '"'+ section_title + '"' 
+                + ' does not exist in the Grades Report! Please check you have' 
+                + ' specified the correct module name for this badge.'
+            )
         }
     }
 
