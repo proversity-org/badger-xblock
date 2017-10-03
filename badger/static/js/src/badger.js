@@ -12,6 +12,7 @@ function BadgerXBlock(runtime, element, data) {
 
     function getGrades(data) {
         var section_scores = data['section_scores'];
+        // Check that the section name specified in Xblock exists in Grades report
         if (section_scores.hasOwnProperty(section_title)) {
             var this_section = section_scores[String(section_title)];
             var section_title_id = '#' + section_title
@@ -62,7 +63,6 @@ function BadgerXBlock(runtime, element, data) {
         $.ajax({
             type: "GET",
             url: my_url,
-            // data: JSON.stringify({"username": user}),
             success: getGrades
         });
     });

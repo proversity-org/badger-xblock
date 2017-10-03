@@ -136,9 +136,10 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         return self.get_xblock_settings().get('BADGR_API_TOKEN', '')
 
     def get_list_of_issuers(self):
-
+        """
+        Get a list of issuers from badgr.proversity.org
+        """
         issuer_list = requests.get("http://badgr.proversity.org/v1/issuer/issuers",  headers={'Authorization': 'token ' +  str(self.api_token)})
-
         return issuer_list.json()
 
     def resource_string(self, path):
