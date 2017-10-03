@@ -26,8 +26,10 @@ function BadgerXBlock(runtime, element, data) {
                             location.reload();
                     },
                     error : function(xhr,errmsg,err) {
-                        $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                        " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                        $('.badge-loader').hide();
+                        $('#lean_overlay').hide();
+                        $('#check-for-badge').remove();
+                        $('#results').html("<div>Oops! We have encountered an error, please check that the badge exists and the correct name has been specified.</div>"); // add the error to the dom
                         console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
                     }
                 });
