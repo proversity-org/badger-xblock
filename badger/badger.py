@@ -135,11 +135,25 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         """
         return self.get_xblock_settings().get('BADGR_API_TOKEN', '')
 
+    @property
+    def api_url(self):
+        """
+        Returns the URL of the Badgr Server from the Settings Service.
+        The URL hould be set in both lms/cms env.json files inside XBLOCK_SETTINGS.
+        Example:
+            "XBLOCK_SETTINGS": {
+                "BadgerXBlock": {
+                    "BADGR_BASE_URL": "YOUR URL  GOES HERE"
+                }
+            },
+        """
+        return self.get_xblock_settings().get('BADGR_BASE_URL' '')
+
     def get_list_of_issuers(self):
         """
         Get a list of issuers from badgr.proversity.org
         """
-        issuer_list = requests.get("http://badgr.proversity.org/v1/issuer/issuers",  headers={'Authorization': 'token ' +  str(self.api_token)})
+        issuer_list = requests.get('{}/v1/issuer/issuers'.format(self.api_url),  headers={'Authorization': 'token {}'.format(self.api_token)})
         return issuer_list.json()
 
     def resource_string(self, path):
