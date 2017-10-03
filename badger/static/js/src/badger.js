@@ -29,7 +29,8 @@ function BadgerXBlock(runtime, element, data) {
                         $('.badge-loader').hide();
                         $('#lean_overlay').hide();
                         $('#check-for-badge').remove();
-                        $('#results').html("<div>Oops! We have encountered an error, please check that the badge exists and the correct name has been specified.</div>"); // add the error to the dom
+                        $('#results').html("<div>Oops! We have encountered an error, the badge does not exist. Please contact your support administrator."+
+                        "</div>"); // add the error to the dom
                         console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
                     }
                 });
