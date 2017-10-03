@@ -22,6 +22,7 @@ function BadgerXBlock(runtime, element, data) {
                     url: handlerUrl,
                     data:JSON.stringify({"name": "badger"}),
                     success: function(json) {
+                            // Just reload the page, the correct html with the badge will be displayed
                             location.reload();
                     },
                     error : function(xhr,errmsg,err) {
