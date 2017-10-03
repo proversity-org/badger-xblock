@@ -1,10 +1,15 @@
 /* Javascript for StudioEditableXBlockMixin. */
-function StudioEditableXBlockMixin(runtime, element) {
+function StudioEditableXBlockMixin(runtime, element, data) {
     "use strict";
     
     var fields = [];
     var tinyMceAvailable = (typeof $.fn.tinymce !== 'undefined'); // Studio includes a copy of tinyMCE and its jQuery plugin
     var datepickerAvailable = (typeof $.fn.datepicker !== 'undefined'); // Studio includes datepicker jQuery plugin
+
+    var badgrApiToken = data.badgrApiToken;
+    console.log("hi", data.badgrApiToken);
+
+    $('#dropdownl').append('<option value="unique-issuer">' + 'khda'+ '</option>')
 
     $(element).find('.field-data-control').each(function() {
         var $field = $(this);
