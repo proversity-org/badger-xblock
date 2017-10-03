@@ -219,8 +219,7 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
             'assertion_url': self.assertion_url,
             'description': self.description,
             'criteria': self.criteria,
-            'award_message': self.award_message,
-            
+            'award_message': self.award_message
         }
 
         frag = Fragment(loader.render_django_template("static/html/badger.html", context).format(self=self))
