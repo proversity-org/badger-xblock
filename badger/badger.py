@@ -115,8 +115,15 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         help='Message the user will see if they do not quailify for a badge'
     )
 
+    button_text = String(
+        display_name='Button text',
+        default = u"Click here to view your results.",
+        scope=Scope.settings,
+        help='Text appearing on button'
+    )
 
-    editable_fields = ('display_name', 'description', 'criteria', 'issuer_slug','badge_slug', 'pass_mark', 'section_title', 'award_message', 'motivation_message',)
+
+    editable_fields = ('display_name', 'description', 'criteria', 'issuer_slug','badge_slug', 'pass_mark', 'section_title', 'award_message', 'motivation_message', 'button_text')
     show_in_read_only_mode = True
  
 
@@ -233,7 +240,8 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
             'assertion_url': self.assertion_url,
             'description': self.description,
             'criteria': self.criteria,
-            'award_message': self.award_message
+            'award_message': self.award_message,
+            'button_text': self.button_text
         }
 
         frag = Fragment(loader.render_django_template("static/html/badger.html", context).format(self=self))
