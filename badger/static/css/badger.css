@@ -8,7 +8,12 @@
     cursor: pointer;
 }
 
+.badge-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
+}
 
 .badge-loader {
     position: fixed;
