@@ -130,7 +130,7 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
     )
 
 
-    editable_fields = ('display_name', 'description', 'criteria', 'issuer_slug','badge_slug', 'pass_mark', 'section_title', 'award_message', 'motivation_message', 'button_text')
+    editable_fields = ('display_name', 'description', 'criteria', 'issuer_slug','badge_slug', 'badge_name', 'pass_mark', 'section_title', 'award_message', 'motivation_message', 'button_text')
     show_in_read_only_mode = True
  
 
