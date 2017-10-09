@@ -1,4 +1,4 @@
-ex/* CSS for BadgerXBlock */
+/* CSS for BadgerXBlock */
 
 .badger_block .count {
     font-weight: bold;
@@ -29,7 +29,6 @@ ex/* CSS for BadgerXBlock */
     animation: spin 2s linear infinite;
 }
 
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -39,16 +38,15 @@ ex/* CSS for BadgerXBlock */
 	box-sizing: border-box;
 }
 
-
 .btn-default-badger {
     background: #0075b4;
-    color: #fff !important;
+    color: #fff;
     transition: all 0.3s;
 }
 
 .btn-default-badger:hover, .btn-default:focus {
     background: #009ade;
-    color: #fff !important;
+    color: #fff;
     box-shadow: none;
 }
 
