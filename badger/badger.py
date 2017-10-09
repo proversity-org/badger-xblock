@@ -107,7 +107,6 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         help='The user'
     ) 
 
-
     award_message = String(
         display_name='Award message',
         default=u'Well done you are an all star!',
@@ -137,11 +136,23 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
     )
 
 
-    editable_fields = ('display_name', 'description', 'criteria', 'issuer_slug','badge_slug', 'badge_name', 'pass_mark', 'section_title', 'award_message', 'motivation_message', 'button_text', 'button_colour')
+    editable_fields = (
+        'display_name',
+        'description',
+        'criteria',
+        'issuer_slug',
+        'badge_slug',
+        'badge_name', 
+        'pass_mark',
+        'section_title',
+        'award_message',
+        'motivation_message',
+        'button_text',
+        'button_colour'
+    )
+
     show_in_read_only_mode = True
  
-
-
     @property
     def api_token(self):
         """
@@ -251,9 +262,6 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
             'check_earned': self.check_earned,
             'section_title': self.section_title,
             'image_url': self.image_url,
-            'assertion_url': self.assertion_url,
-            'description': self.description,
-            'criteria': self.criteria,
             'award_message': self.award_message,
             'button_text': self.button_text,
             'button_colour': self.button_colour
