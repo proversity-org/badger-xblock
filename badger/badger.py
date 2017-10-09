@@ -48,6 +48,13 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         default=u"test-badge"
     )
 
+    badge_name = String(
+        display_name="Badge display name",
+        help="Badge name that appears in Accomplishments tab",
+        scope=Scope.settings,
+        default=u"Module 1 Badge"
+    )
+
     image_url = String(
         help="The url for the badge image on Badgr server",
         scope=Scope.user_state,
@@ -72,7 +79,7 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         display_name="Section title",
         help="See the display name of this section",
         scope=Scope.settings,
-        default="Section"
+        default=u"Section"
     )
 
     pass_mark = Float(
@@ -179,7 +186,7 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         badge_class = badge_service.get_badge_class(
            slug=self.badge_slug, issuing_component=self.issuer_slug,
             course_id=self.runtime.course_id,
-            display_name=self.badge_slug,
+            display_name=self.badge_name,
             description=self.description,
             criteria=self.criteria
         )
