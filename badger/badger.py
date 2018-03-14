@@ -156,7 +156,7 @@ class BadgerXBlock(StudioEditableXBlockMixin, XBlockWithSettingsMixin, XBlock):
         'motivation_message',
         'button_text',
         'button_colour',
-        'button_text_colour '
+        'button_text_colour'
     )
 
     show_in_read_only_mode = True
